@@ -75,7 +75,21 @@ iframe {
 }
 
 @media screen and (max-width:768px) {
+    iframe {
+        height: 270px;
+    }
     .serach-div {
         height: 215px;
+    }
+    .tabbable .nav-tabs {
+        height: 140px;
+    }
+    .tabbable a div {
+        width: 97px;
+        height: 125px;
+    }
+    .tabbable a div img {
+        width: 100%;
+        height: 67px;
     }
 }

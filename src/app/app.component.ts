@@ -76,7 +76,7 @@ export class AppComponent implements AfterViewInit {
     this.videoUrl = null;
     this.videoUrl = `https://www.youtube.com/embed/${videoId}`;
     if (this.isMobile) {
-      this.viewInPop(template)
+      // this.viewInPop(template)
     }
   }
 
