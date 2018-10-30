@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row m-0  p-4 mat-elevation-z8 bg-white">
+    <div class="row m-0  p-4 mat-elevation-z8 bg-white serach-div">
         <mat-form-field class="w-100">
             <input matInput placeholder="SEARCH" id="keyboard">
         </mat-form-field>
@@ -9,8 +9,27 @@
         <mat-progress-bar *ngIf="isProcessing" mode="Indeterminate"></mat-progress-bar>
     </div>
     <div class="row m-0 pt-4">
-        <div class="col-12 col-sm-6 mat-elevation-z8 bg-white list" *ngIf="videos?.length">
-            <mat-nav-list>
+        <div class="container-fluid mat-elevation-z8 bg-white">
+            <nav class="tabbable p-0 mat-elevation-z8 bg-white">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist" *ngIf="videos?.length">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" *ngFor="let video of videos" (click)="sretUrl(video.id.videoId,viewer)" [ngClass]="{'active-row':video.id.videoId == videoId}">
+                        <div>
+                            <img class="mb-2" [src]="video.snippet.thumbnails.default.url" alt="">
+                            <p><strong>{{video.snippet.title}}</strong></p>
+                            <p>
+                                <small> {{video.snippet.description}} </small>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <!-- <div class="col-12 col-sm-12 mat-elevation-z8 bg-white list" *ngIf="videos?.length"> -->
+        <!-- 
+            <div *ngFor="let video of videos" (click)="sretUrl(video.id.videoId,viewer)" [ngClass]="{'active-row':video.id.videoId == videoId}">
+                
+            </div> -->
+        <!-- <mat-nav-list>
                 <mat-list-item *ngFor="let video of videos" (click)="sretUrl(video.id.videoId,viewer)" [ngClass]="{'active-row':video.id.videoId == videoId}">
                     <img matListAvatar [src]="video.snippet.thumbnails.default.url" alt="...">
                     <h3 matLine> {{video.snippet.title}} </h3>
@@ -18,10 +37,10 @@
                         <span> {{video.snippet.description}} </span>
                     </p>
                 </mat-list-item>
-            </mat-nav-list>
-        </div>
-        <div class="col-sm-6 pl-2 pr-0" *ngIf="!isMobile">
-            <iframe *ngIf="videoUrl" class="w-100 h-50 mat-elevation-z8 bg-white" [src]="videoUrl | safe">
+            </mat-nav-list> -->
+        <!-- </div> -->
+        <div class="col-sm-12 px-0 mt-2" *ngIf="!isMobile">
+            <iframe *ngIf="videoUrl" class="w-100 mat-elevation-z8 bg-white" [src]="videoUrl | safe">
             </iframe>
         </div>
     </div>

@@ -1,7 +1,7 @@
 import { YoutubeVideo } from './models/youtube-video';
 import { YoutubeService } from './services/youtube.service';
 import { Component, AfterViewInit, TemplateRef, HostListener } from '@angular/core';
-import {  MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 declare var $: any;
 
@@ -45,16 +45,21 @@ export class AppComponent implements AfterViewInit {
       },
       usePreview: false,
       acceptValid: true,
+      alwaysOpen: true,
+      appendLocally: true,
       accepted: (e, keyboard, el) => {
         this.serach(el.value);
+      },
+      validate: (keyboard, value, isClosing) => {
+        this.serach(value);
       }
     });
 
-    $.keyboard.keyaction.enter = function(base){
+    $.keyboard.keyaction.enter = function (base) {
       if (base.el.nodeName === "INPUT") {
         base.accept();      // accept the content
-        
-      } 
+
+      }
     };
   }
 
@@ -62,7 +67,7 @@ export class AppComponent implements AfterViewInit {
     this.dialogRef = this.dialog.open(template, { disableClose: true });
   }
 
- 
+
 
 
   sretUrl(videoId, template: TemplateRef<any>) {
