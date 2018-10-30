@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row m-0  p-4 mat-elevation-z8 bg-white">
+        <mat-form-field class="w-100">
+            <input matInput placeholder="SEARCH" id="keyboard">
+        </mat-form-field>
+        <!-- <div class="w-100 text-center p-2">
+            <button class="" (click)="searchOnTEXT()" mat-stroked-button color="accent">SEARCH</button>
+        </div> -->
+        <mat-progress-bar *ngIf="isProcessing" mode="Indeterminate"></mat-progress-bar>
+    </div>
+    <div class="row m-0 pt-4">
+        <div class="col-12 col-sm-6 mat-elevation-z8 bg-white list" *ngIf="videos?.length">
+            <mat-nav-list>
+                <mat-list-item *ngFor="let video of videos" (click)="sretUrl(video.id.videoId,viewer)" [ngClass]="{'active-row':video.id.videoId == videoId}">
+                    <img matListAvatar [src]="video.snippet.thumbnails.default.url" alt="...">
+                    <h3 matLine> {{video.snippet.title}} </h3>
+                    <p matLine>
+                        <span> {{video.snippet.description}} </span>
+                    </p>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+        <div class="col-sm-6 pl-2 pr-0" *ngIf="!isMobile">
+            <iframe *ngIf="videoUrl" class="w-100 h-50 mat-elevation-z8 bg-white" [src]="videoUrl | safe">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #viewer>
+    <div class="row m-0 p-0">
+
+        <iframe *ngIf="videoUrl" class="w-100 h-100 mat-elevation-z8 bg-white" [src]="videoUrl | safe">
+            </iframe>
+        <div class="w-100 text-center p-2">
+            <button class="" (click)="dialogRef.close()" mat-stroked-button color="accent">CLOSE</button>
+        </div>
+    </div>
+</ng-template>

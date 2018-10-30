@@ -1,0 +1,22 @@
+/* jQuery UI is not loaded! 
+  this demo uses the "keyboard-dark.css" theme
+  ( https://github.com/Mottie/Keyboard/blob/master/css/keyboard-dark.css )
+  to add a basic dark theme to the keyboard
+
+  The theme includes css to position the keyboard
+  at the botom of the browser window
+*/
+
+.bg-white {
+    background-color: white;
+}
+
+.active-row {
+    background-color: lightgray;
+}
+
+.list {
+    height: 580px;
+    overflow: hidden;
+    overflow-y: auto;
+}
